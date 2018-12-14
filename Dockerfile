@@ -11,6 +11,9 @@ RUN rm /etc/nginx/sites-enabled/default
 ADD php-custom.ini /etc/php/7.2/php-custom.ini
 RUN ln -s ../../php-custom.ini /etc/php/7.2/fpm/conf.d
 
+ADD php-fpm-pool.conf /etc/php/7.2/php-fpm-pool.conf
+RUN ln -s ../../php-fpm-pool.conf /etc/php/7.2/fpm/pool.d/z-php-fpm-pool.conf
+
 RUN mkdir -p /var/run/php
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
